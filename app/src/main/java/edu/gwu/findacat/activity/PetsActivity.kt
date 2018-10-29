@@ -72,7 +72,7 @@ class PetsActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLi
         finish()
         val intent = Intent(this@PetsActivity, PetsActivity::class.java)
         intent.putParcelableArrayListExtra(MenuActivity.CAT_DATA, ArrayList(petItems))
-        //populateItemList(petItems)
+        startActivity(intent)
     }
 
     override fun locationFound(location: Location) {
@@ -112,7 +112,7 @@ class PetsActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLi
             val userInput: EditText =  promptZipView.findViewById(R.id.edit_zip_text)
 
             //set dialog message
-            alertDialogBuilder.setPositiveButton(R.string.zip_search){dialog, which -> searchZip(userInput.toString().toInt())}
+            alertDialogBuilder.setPositiveButton(R.string.zip_search){dialog, which -> searchZip(userInput.text.toString().toInt())}
             alertDialogBuilder.setNegativeButton(R.string.zip_not_search){dialog, which ->dialog.cancel() }
 
             // create alert dialog
