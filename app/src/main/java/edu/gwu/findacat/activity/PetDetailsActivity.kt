@@ -59,6 +59,7 @@ class PetDetailsActivity() : AppCompatActivity(),PetSearchManager.PetSearchCompl
         if(id == android.R.id.home){
             this.finish()
         }
+
         if(id == R.id.favorite_icon){
 
             Toast.makeText(this,"Add to favorites", Toast.LENGTH_SHORT).show()
