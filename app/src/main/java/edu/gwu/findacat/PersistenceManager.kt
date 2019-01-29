@@ -20,26 +20,45 @@ class PersistenceManager(private val context: Context){
 
     }
 
-
     init {
         savePreferences = PreferenceManager.getDefaultSharedPreferences(context)
     }
 
-    fun saveFavorite(favoriteCats: PetItem){
-        val scores = fetchFavorite().toMutableList()
-        scores.add(favoriteCats)
+    fun saveFavorite(petItem: PetItem){
+        val petItems = fetchFavorite().toMutableList()
+
+        petItems.add(petItem)
 
         val editor = savePreferences.edit()
 
-        //convert a list of scores into a JSON string
-        val moshi = Moshi.Builder().add(Date::class.java, Rfc3339DateJsonAdapter()).build()
+        //convert a list of petItems into a JSON
+        val moshi = Moshi.Builder().build()
         val listType = Types.newParameterizedType(List::class.java, PetItem::class.java)
         val jsonAdapter = moshi.adapter<List<PetItem>>(listType)
-        val jsonString = jsonAdapter.toJson(scores)
+        val jsonString = jsonAdapter.toJson(petItems)
 
         editor.putString(FAVORITE_KEY, jsonString)
+
         editor.apply()
 
+    }
+
+    fun removeFavorite(petItem: PetItem){
+        val petItems = fetchFavorite().toMutableList()
+
+        petItems.remove(petItem)
+
+        val editor = savePreferences.edit()
+
+        //convert a list of petItems into a JSON
+        val moshi = Moshi.Builder().build()
+        val listType = Types.newParameterizedType(List::class.java, PetItem::class.java)
+        val jsonAdapter = moshi.adapter<List<PetItem>>(listType)
+        val jsonString = jsonAdapter.toJson(petItems)
+
+        editor.putString(FAVORITE_KEY, jsonString)
+
+        editor.apply()
     }
 
     fun fetchFavorite(): List<PetItem> {
@@ -49,29 +68,28 @@ class PersistenceManager(private val context: Context){
         if (jsonString == null) {
             return arrayListOf<PetItem>()
         } else {
-            //existing scores, so convert the scores JSON string into Score objects, using Moshi
+            //existing favorites, so convert the scores JSON string into Score objects, using Moshi
             val listType = Types.newParameterizedType(List::class.java, PetItem::class.java)
-            val moshi = Moshi.Builder()
-                    .add(Date::class.java, Rfc3339DateJsonAdapter())
-                    .build()
+            val moshi = Moshi.Builder().build()
             val jsonAdapter = moshi.adapter<List<PetItem>>(listType)
 
-            var favorites: List<PetItem>? = emptyList<PetItem>()
+            var petItems: List<PetItem>? = emptyList<PetItem>()
             try {
-                favorites = jsonAdapter.fromJson(jsonString)
+                petItems = jsonAdapter.fromJson(jsonString)
             } catch (e: IOException) {
                 Log.e(ContentValues.TAG, e.message)
             }
 
-            if (favorites != null) {
-                return favorites
-            }
-                else {
-                    return emptyList<PetItem>()
-                }
+            if (petItems != null) {
+                return petItems
+            } else {
+                return emptyList<PetItem>()
             }
 
         }
-
-
     }
+
+    fun ifFavoritePetItem(petItem: PetItem): Boolean{
+        return fetchFavorite().contains(petItem)
+    }
+}

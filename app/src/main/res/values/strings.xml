@@ -1,28 +1,26 @@
 <resources>
-    <string name="app_name">Find a Cat</string>
-    <string name="find_a_cat_text">Find a Cat</string>
-    <string name="find_a_cat_btntext">尋找貓</string>
-    <string name="favorite_cats_btntext">蒐藏的貓</string>
-    <string name="catsfact_holder">貓的冷知識: + %s</string>
-
-    <string name="title_activity_pets">附近的貓</string>
-    <string name="title_activity_pets_details">關於這隻貓</string>
-    <string name="permissions_denied">拒絕</string>
-    <string name="permissions_granted">允許</string>
-    <string name="use_zip_text">郵遞區號</string>
+    <string name="app_name">Hello Kitten</string>
+    <string name="find_a_cat_text">Hello Kitten</string>
+    <string name="find_a_cat_btntext">Find a Cat</string>
+    <string name="favorite_cats_btntext">Favorite Cats</string>
+    <string name="catsfact_holder">Cat Fact: + %s</string>git
+    <string name="title_activity_pets">Nearby Cats</string>
+    <string name="title_activity_pets_details">Cat Details</string>
+    <string name="permissions_denied">Location permission denied</string>
+    <string name="permissions_granted">Location permission approved</string>
+    <string name="use_zip_text">Use Zip</string>
     <string name="cat_detail">Detail</string>
-    <string name="detail_name_textview">姓名: %s</string>
-    <string name="share_message">如果您對這隻貓 %s 感興趣, 請寄e-mail到 %s. 照片網址： %s</string>
-    <string name="share">分享</string>
-    <string name="send_message">您好, 我對這隻名叫 %s 的貓感興趣，希望獲得更多資訊。</string>
-    <string name="send">寄信</string>
-    <string name="enter_zip_text">請輸入5碼郵遞區號:</string>
-    <string name="zip_search">搜尋</string>
-    <string name="zip_not_search">取消</string>
-    <string name="detail_gender_textview">性別: %s</string>
-    <string name="detail_breed_textview">品種: %s</string>
-    <string name="detail_zip_textview">郵遞區號: %s</string>
-    <string name="detail_description_textview">描述: %s</string>
-
+    <string name="detail_name_textview">Name: %s</string>
+    <string name="share_message">If you are interested in adopting this lovely cat, %s, please e-mail to %s. You can find the photo here: %s</string>
+    <string name="share">Share</string>
+    <string name="send_message">Hi, I am interested in adopting the lovely cat %s. Could I get further info?</string>
+    <string name="send">Send email</string>
+    <string name="enter_zip_text">Please enter 5 digit zip code:</string>
+    <string name="zip_search">Search</string>
+    <string name="zip_not_search">Deny</string>
+    <string name="detail_gender_textview">Gender: %s</string>
+    <string name="detail_breed_textview">Breed: %s</string>
+    <string name="detail_zip_textview">Zip: %s</string>
+    <string name="detail_description_textview">Description: %s</string>
 
 </resources>

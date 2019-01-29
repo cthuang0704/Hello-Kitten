@@ -36,12 +36,13 @@ class PetsActivity : AppCompatActivity(), PetSearchManager.PetSearchCompletionLi
     private val TAG = "Load Pet"
     private lateinit var petItems: ArrayList<PetItem>
     private var defaultZipCode = 22201
-
+    private lateinit var title: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pets)
 
+        //title = intent.getStringExtra(MenuActivity.TITLE_KEY)
         petSearchManager = PetSearchManager(this@PetsActivity)
 
         val fusedLocationClient: FusedLocationProviderClient

@@ -39,6 +39,7 @@ class MenuActivity : AppCompatActivity(),CatFactManager.CatFactCompletionListene
 
     companion object {
         val CAT_DATA = "cataData"
+        val TITLE_KEY = "title"
     }
 
     //onCreate: the entry point of the activity

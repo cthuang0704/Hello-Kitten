@@ -22,6 +22,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 
 class PetsAdapter(val petContent: ArrayList<PetItem>, private val clickListener: OnItemClickListener): RecyclerView.Adapter<PetsAdapter.ViewHolder>(){
+    private val TAG  = "PetsAdapter"
     companion object {
         val NAME_DATA_KEY = "nameData"
         val IMAGE_NAME_DATA_KEY = "imageNameData"

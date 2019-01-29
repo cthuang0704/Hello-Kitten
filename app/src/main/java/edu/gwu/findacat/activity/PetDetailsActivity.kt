@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import edu.gwu.findacat.PersistenceManager
 import edu.gwu.findacat.PetSearchManager
 import edu.gwu.findacat.PetsAdapter
 import edu.gwu.findacat.R
@@ -22,7 +23,8 @@ import org.jetbrains.anko.startActivity
 
 class PetDetailsActivity() : AppCompatActivity(),PetSearchManager.PetSearchCompletionListener{
 
-    private var petItem: PetItem ?= null
+    private lateinit var petItem: PetItem
+    private lateinit var persistenceManager: PersistenceManager
     lateinit var favoriteList: List<PetItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +63,18 @@ class PetDetailsActivity() : AppCompatActivity(),PetSearchManager.PetSearchCompl
         }
 
         if(id == R.id.favorite_icon){
-
+            if(item.isChecked){
+                item.setChecked(false)
+                item.setIcon(R.drawable.ic_favorite_border)
+                //persistenceManager.removeFavorite(petItem)
+            }else{
+                item.setChecked(true)
+                item.setIcon(R.drawable.ic_favorite)
+                //persistenceManager.saveFavorite(petItem)
+            }
             Toast.makeText(this,"Add to favorites", Toast.LENGTH_SHORT).show()
             return true
+
         }
         if(id == R.id.mail_icon){
             val sendIntent = Intent()
